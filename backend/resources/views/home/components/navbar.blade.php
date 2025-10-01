@@ -6,8 +6,9 @@
     
     
     </div>
-<div id='right'><span>Inscription</span>
-    <span>Connexion</span>
+<div id='right'>
+    <a href="{{route('register')}}" class="text-sm hover:text-blue-900 transition">Inscription</a>
+    <a href="{{route('login')}}" class="text-sm hover:text-blue-900 transition">Connexion</a>
     
     
     </div>
