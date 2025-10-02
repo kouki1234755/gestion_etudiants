@@ -11,6 +11,21 @@ class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
+    // Relation vers le rôle
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+    // Relation 1-1 vers Student
+    public function student()
+    {
+        return $this->hasOne(Student::class,'id');
+    }
+
+    // Relation 1-1 vers Teacher
+    public function teacher()
+    { return $this->hasOne(Teacher::class,'id'); 
+    }
 
     /**
      * The attributes that are mass assignable.

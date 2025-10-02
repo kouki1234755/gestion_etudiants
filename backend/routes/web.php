@@ -17,18 +17,24 @@ Route::get('/contact', function () {
 });
 
 //routes admin
-
+route::middleware(['auth'])->group(function (){
 Route::get('/admin', function () {
     return view('admin.Dashboard');
 })->name('dashboard');
-
+});
 //auth (authentification) routes
 
 /*Route::get('/login', function () {
     return view('auth.login');
 });*/
-Route::get('/login',[AuthController::class,'showLogin'])->name('login');
-Route::get('/register',[AuthController::class,'showRegister'])->name('register');
+route::middleware(['guest'])->group(function () {
+    Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+    Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
+});
+
+
+//Route::get('/login',[AuthController::class,'showLogin'])->name('login');
+//Route::get('/register',[AuthController::class,'showRegister'])->name('register');
 
 Route::post('/login',[AuthController::class,'login'])->name('login');
 Route::post('/register',[AuthController::class,'register'])->name('register');
